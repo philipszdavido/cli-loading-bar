@@ -17,10 +17,11 @@ class LoadingBar {
     }
 
     start() {
-        process.stdout.write("\x1B[?25l")
+        std.write("\x1B[?25l")
         for (let i = 0; i < this.size; i++) {
             process.stdout.write("\u2591")
         }
+        std.write(this.size + "%")
         rdl.cursorTo(process.stdout, this.cursor, 0);
         this.timer = setInterval(() => {
             process.stdout.write(this.color.start + this.str + this.color.stop)
@@ -30,6 +31,11 @@ class LoadingBar {
             }
         }, 100)
     }
+
+    next() {
+
+    }
 }
 
+module.exports = LoadingBar
 module.exports = LoadingBar
